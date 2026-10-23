@@ -34,7 +34,8 @@ FutureQuestr is for people aged 16 and over. It asks for your year of birth the 
 * Share your upcoming week as text
 * Use it offline, and sign in to keep your timetable in sync across your devices
 * Export and import a backup file
-* Choose 12 hour or 24 hour time, in light or dark mode
+* Choose 12 hour or 24 hour time, and light mode, dark mode or whatever your phone is set to
+* Update the app from inside the app itself, with an optional background download
 
 ## How to use it
 
@@ -74,7 +75,19 @@ If the AI is busy, or you have used up the day's allowance, you get a ready made
 
 ### Your account and your data
 
-The Account tab is where you can switch between 12 hour and 24 hour time, export or import a backup, check for updates, sign out, delete your data or delete your account. Updates are checked in the background. When a new version is ready, the app asks if you want to install it.
+The Account tab is where you can switch between 12 hour and 24 hour time, pick light, dark or system appearance, choose how updates behave, export or import a backup, check for updates, sign out, delete your data or delete your account.
+
+### Updates
+
+FutureQuestr checks for new versions about every 30 minutes. When one is ready you will see an Update now button. Tap it and the app downloads the update, checks it and installs it for you, with a progress screen the whole way. Android may still ask for one tap to confirm the install.
+
+In the Account tab you choose how updates behave:
+
+* Ask first tells you an update is out and does nothing else until you say so
+* Download in background is the default. It fetches updates on WiFi when your battery is healthy, then asks you to install
+* Install automatically does the same, then installs by itself when Android allows it. Whether that works depends on your phone and Android version, so some phones will still ask
+
+The app only installs an update if it is signed with the same key as the version you already have, and it checks the download is complete first.
 
 ## Your data
 
@@ -83,3 +96,13 @@ Your Quests, XP, level, streak and badges are stored on your phone. While you ar
 When you use the AI planner, the text you wrote is sent to the AI services that build your timetable. Please do not put personal details like full names or addresses into Quest titles or the planner.
 
 Your GitHub details are used only to sign you in. You can delete your data, or your whole account, from the Account tab whenever you like.
+
+Known limits: Android only, a GitHub account is needed to sign in, and the free AI services have daily limits.
+
+## What is coming next
+
+Importing your school or college timetable is still planned for a later version. You will be able to paste your lessons in as text, or read them from a photo of a printout, and the planner will build your Quests around them.
+
+## Bugs and ideas
+
+If something breaks, or you have an idea, open an issue on this repository. It helps a lot if you say which phone you have and which version of Android it runs.
