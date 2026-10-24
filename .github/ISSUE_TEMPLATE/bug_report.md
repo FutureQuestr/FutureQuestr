@@ -1,9 +1,10 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
+about: Create a report to help us improve and fix this bug
+title: Bug Report
 labels: ''
 assignees: ''
+type: Bug
 
 ---
 
@@ -12,10 +13,10 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+1.
+2.
+3.
+4.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -24,14 +25,14 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
+ - OS: [e.g. iOS, Windows 8/10/11, Linux]
+ - Browser [e.g. Chrome, Safari, Edge]
  - Version [e.g. 22]
 
 **Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
+ - Device: [e.g. iPhone6, Samsung S26 Ultra, Samsung S26]
+ - OS: [e.g. iOS8.1, OneUI, Android, MIUI]
+ - Browser [e.g. Stock Browser, Safari, Edge, Chrome]
  - Version [e.g. 22]
 
 **Additional context**
