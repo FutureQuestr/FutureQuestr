@@ -1,0 +1,21 @@
+name = "futurequestr-api"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# The server asks each provider which models are available and picks good ones itself.
+# The names below are only a backup list (comma separated) used if that lookup fails.
+# Edit them and run 5_deploy_server.bat again if a provider stops working.
+[vars]
+GROQ_MODEL = "openai/gpt-oss-20b,llama-3.3-70b-versatile"
+GITHUB_MODEL = "openai/gpt-4.1-mini,openai/gpt-4o-mini"
+OPENROUTER_MODEL = "openai/gpt-oss-20b:free,meta-llama/llama-3.3-70b-instruct:free"
+SHARED_DAILY_LIMIT = "8"
+TOTAL_DAILY_LIMIT = "40"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "futurequestr-db"
+database_id = "185a364e-0f7e-4cea-abdc-0b366bb2e681"
+
+
+

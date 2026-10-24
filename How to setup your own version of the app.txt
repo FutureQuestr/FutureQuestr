@@ -1,0 +1,92 @@
+FUTUREQUESTR - BUILD KIT (Windows 10 or 11)
+===========================================
+
+WHAT THIS IS
+  The full Android app (Kotlin + Jetpack Compose), the Cloudflare server for AI and sync,
+  your logos, synthesized reward sounds, and scripts that set everything up and build a
+  signed APK for you.
+
+QUICK START
+  1. Do the "One-time accounts" below (about 15 minutes).
+  2. On your phone: Settings > About phone > tap "Build number" 7 times, then
+     Settings > Developer options > turn on USB debugging. Plug the phone in.
+  3. Double-click make_app.bat. It runs everything in order and only prints
+     "FINISHED" if every step really worked.
+  4. First run downloads a few GB of tools and takes 15 to 30 minutes. Later builds are fast.
+  5. If anything fails: double-click capture_logs.bat and send me the report file it makes
+     (passwords and keys are hidden in it).
+
+THE SCRIPTS
+  make_app.bat          Runs steps 1 to 5 below, in order.
+  1_setup.bat           Checks for Java 17+, Android SDK, adb, Gradle and Node.js. Uses what you
+                        already have; downloads only what is missing (into the tools folder).
+  2_create_keystore.bat Creates your signing key and a backup copy.
+  3_build_apk.bat       Builds and signs the APK into the dist folder.
+  4_install.bat         Installs on your phone with adb (USB or wireless) and checks it launches.
+  5_deploy_server.bat   Deploys the Cloudflare server (AI planner, cloud sync, clock check).
+  publish_update.bat    Asks for the new version number, builds, and uploads a GitHub release.
+  6_test_ai.bat         Tests your Groq and OpenRouter keys and the planner, and shows why the AI planner fails.
+  capture_logs.bat      Collects a report to send me when something fails.
+  config.txt            Everything the scripts remember (passwords, keys, version, addresses).
+
+ONE-TIME ACCOUNTS
+  Step 1 - GitHub App (this is what "Sign in with GitHub" uses)
+    a. github.com > your profile picture > Settings > Developer settings > GitHub Apps > New GitHub App.
+    b. Name: FutureQuestr (add something if it is taken). Homepage URL: any web address.
+    c. Leave Callback URL empty.
+    d. UNTICK "Expire user authorization tokens".   <-- important
+    e. TICK "Enable Device Flow".
+    f. UNTICK Webhook "Active".
+    g. Permissions > Account permissions: if you see "Models", set it to Read-only.
+    h. "Where can this GitHub App be installed?" > Any account.
+    i. Click Create GitHub App, then copy the Client ID (it starts with "Iv").
+       The build script asks for it once and saves it in config.txt.
+  Step 2 - Releases repo (for auto-updates)
+    Choose a name like yourname/futurequestr-releases. publish_update.bat creates it for you.
+    It must be PUBLIC so phones can check it without a key.
+  Step 3 - Cloudflare (free)
+    5_deploy_server.bat opens a browser to log in or sign up. No card should be needed,
+    but Cloudflare can change that.
+  Step 4 - Groq and OpenRouter keys (optional, free)
+    The deploy script opens each page, you create a key and paste it. Keys are tested, then
+    stored on the server as secrets. They are never inside the APK.
+
+UPDATING THE APP LATER
+  Change the code, then run publish_update.bat. It shows the current version, asks for the new one
+  (any number is accepted: higher, the same, or lower; phones only take an update that is higher than what they have), builds, signs with the SAME keystore, and uploads a release.
+  Phones check about every 30 minutes (Android may delay this to save battery) and ask the user to tap Update.
+
+LOGS
+  Every script saves a detailed log in the logs folder each time it runs: setup.log, keystore.log,
+  build.log (plus build_gradle.log with the full Gradle output), install.log, deploy.log, publish.log,
+  capture.log and make_app.log. A log holds everything shown on screen, each command that was run,
+  its result, and any error. Passwords and API keys are replaced by ******** in the logs.
+  The run before the latest one is kept as NAME.previous.log. capture_logs.bat gathers them all into
+  one report file to send me.
+
+BACKUP INSIDE THE APP
+  Account tab > Export backup saves a .json file (pick a folder, Drive, or send it to yourself).
+  Import backup restores it: Replace swaps everything, Merge keeps what is on the device and adds what is missing.
+  The file holds Quests, XP, level, streak, badges and settings (time format, sound, phone brand).
+  It never holds your GitHub sign in. Keep the file private: it lists your Quest titles.
+
+KEEP SAFE
+  The backup folder holds your keystore and config.txt. Copy it somewhere safe NOW.
+  Lose the keystore and nobody can update the app; they would have to uninstall and reinstall.
+  Never upload config.txt or the keystore anywhere.
+
+WHAT I COULD NOT TEST (please tell me what happens)
+  - I could not compile or run any of this. Expect a few rounds of fixes on the first build.
+  - Whether GitHub accepts the GitHub App sign-in token for GitHub Models. If not, the AI planner
+    uses Groq/OpenRouter (if you added keys) or a built-in starter timetable.
+  - Model names (Groq, GitHub Models, OpenRouter) change. Edit them in server\wrangler.toml and
+    run 5_deploy_server.bat again.
+  - Focus Mode behaviour and the permission steps differ by phone brand and Android version.
+  - Auto-update timing: Android decides exactly when background checks run.
+  - The reward sounds are synthesized and unheard by me; tell me which ones to change.
+
+APP RULES AT A GLANCE
+  Age gate 16+. Sign-in with GitHub is required. XP per Quest = minutes (10 to 120) x AI effort
+  rating (0.7 to 1.5), +10% on the Quest's own day, +5% per streak day (max +50%), occasional lucky
+  bonus (max 3 a day), daily cap 800 XP. Level target = 100 x level^1.3, nudged up to 15% by your pace.
+  Reminders: at most 2 a day, quiet 10pm to 8am, none during Focus.

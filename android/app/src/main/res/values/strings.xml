@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FutureQuestr</string>
+    <string name="a11y_desc">Focus Mode: shows a lock screen over other apps while a focus session is running. FutureQuestr only checks which app is open. It does not read your screen, messages or passwords.</string>
+</resources>

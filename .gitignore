@@ -1,0 +1,14 @@
+config.txt
+keystore/
+backup/
+tools/
+dist/
+logs/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+server/node_modules/
+server/.wrangler/
+*.jks
+*.keystore

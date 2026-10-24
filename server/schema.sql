@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS sync (
+  uid TEXT PRIMARY KEY,
+  version INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL,
+  data TEXT NOT NULL,
+  prev_data TEXT
+);
+CREATE TABLE IF NOT EXISTS usage (
+  uid TEXT NOT NULL,
+  day TEXT NOT NULL,
+  shared INTEGER NOT NULL DEFAULT 0,
+  total INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (uid, day)
+);

@@ -1,0 +1,14 @@
+<resources>
+    <style name="Theme.FutureQuestr.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_blank</item>
+        <item name="postSplashScreenTheme">@style/Theme.FutureQuestr</item>
+    </style>
+
+    <style name="Theme.FutureQuestr" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/splash_bg</item>
+        <item name="android:statusBarColor">@color/splash_bg</item>
+        <item name="android:navigationBarColor">@color/splash_bg</item>
+        <item name="android:windowLightStatusBar">@bool/light_bars</item>
+    </style>
+</resources>
